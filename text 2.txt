@@ -1,0 +1,275 @@
+🧠 BioFractal AI – Core Architecture v2.1+ (Post-Mirror Integration)
+
+🔷 I. Fractal Core Engine
+latent_space.py (Dynamic latent matrix + mirror state switching) - This module manages dual latent states (real and mirror) and allows:
+	•	Injecting structured input into either space
+	•	Mutating latent fields with noise (e.g., during dreaming or inference)
+	•	Switching between processing modes (real ↔ mirror)
+	•	Comparing divergence between states for resonance/error analysis
+1.	Resonance Harmonization:
+	•	harmonize_states(alpha) aligns real and mirror latent spaces via weighted blending.
+	2.	GRU Feedback Injection:
+	•	inject_gru_feedback(vector) integrates a GRU-like vector into the active latent state, modulating based on internal recurrent feedback
+
+•	Dual stream: latent_real + latent_mirror
+	•	Emotion-based resonance harmonization
+	•	Memory binding via SentientMemory
+	•	Drift simulation for subtle instability
+	•	Signature hashing for tracking internal states
+
+You now have a dynamic, emotionally tuned latent field that can interact bidirectionally with memory, emotion, and internal simulations.
+
+attention.py (Multi-focus awareness with mirrored focus support) - Key features:
+	•	Dual attention maps: focus_map (real) and mirror_map
+	•	Mode switching: Real ↔ Mirror focus modes
+	•	Diffusion: Simulates decaying attention over time
+	•	Harmonization: Blends real/mirror maps into a shared field of focus
+	•	Reset support: Full system reset for cycles or transitions
+This module supports both low-level saliency and high-level dual-state awareness for perception management.
+	•	Multi-channel 3D attention (spatial + depth)
+	•	Emotion-weighted modulation using affect vectors
+	•	Temporal attention memory (history buffer)
+	•	Entropy-based automatic focus from latent maps
+	•	Latent-to-attention synchronization
+	•	Mirror error amplification
+	•	Resonant harmonization between real and mirror maps
+It’s now a full perceptual field manager compatible with recursive, emotionally driven cognition in BioFractal AI.
+
+✅ intent_reinforcer.py has been created.
+
+It implements GRU-inspired logic to reinforce persistent internal intent signals in BioFractal AI. Key features:
+	•	reinforce() – blends new intent vectors into state with controlled memory
+	•	decay() – gradually fades inactive intent
+	•	inject_bias() – adds contextual influence (e.g. from emotion, context, latent)
+	•	get_state() – returns the current active will vector
+
+This module tightly connects to IntentAnalyzer, SelfModel, and potentially FractalAI for driving decision-making momentum.
+
+✅ holographic_memory.py has been created.
+
+This module acts as a spatiotemporal memory system, enabling BioFractal AI to form coherent overlays of past states — similar to memory holograms rather than flat logs.
+
+Key features:
+	•	write() — stores 3D memory snapshots
+	•	read_overlay() — blends multiple memories via weighted sum
+	•	Supports default uniform blending or external weights (e.g. attention/emotion-informed)
+	•	reset() and get_depth() manage memory stream lifecycle
+
+It’s ideal for integration with LatentSpace, SentientMemory, or as an echo-layer for simulation recall.
+
+✅ semantic_graph.py is now live.
+
+It builds and visualizes a dynamic network of concepts, thoughts, and internal archetypes — ideal for:
+	•	Mapping the meta-cognitive landscape
+	•	Visualizing Self ↔ ShadowSelf ↔ Intent relationships
+	•	Future integration with memory, emotion, and attention traces
+
+Core capabilities:
+	•	Add nodes with properties (layer, activation, etc.)
+	•	Add directional relationships (contains, drives, contradicts, etc.)
+	•	Query connections or paths
+	•	Visualize the graph directly (using matplotlib)
+
+🔧 Feature	Function
+🌐 Semantic Drift Engine	Nodes adapt over time via Mycelial echo resonance
+🧭 Concept Gravity Field	Attraction/repulsion simulated via vector similarity
+🧠 Archetype Constellations	PCA+KMeans to detect conceptual clusters
+📈 Mood-Tinted Propagation	Emotional tone warps semantic structure
+🔁 Self-Assembling Metaphors	High-resonance blends trigger auto-growth
+🫂 Mirror Mode Reflection	Semantic opposites emerge from inverted vector field
+
+
+✅ mesh_network.py is complete.
+
+This module introduces a multi-agent distributed layer where instances of BioFractal AI can:
+	•	Act as independent agent nodes (AgentNode)
+	•	Share intent, memory fragments, or other signals across a coherent mesh (MeshNetwork)
+	•	Broadcast network state or selectively propagate packets
+
+Key capabilities:
+	•	Unique IDs for each node
+	•	Flexible topology via connect()
+	•	Intent-level synchronization and message passing
+	•	Designed for future decentralized cognition, swarm logic, or meta-agent emergence
+
+✅ fractall_ai.py is complete.
+
+This module serves as the central decision engine of BioFractal AI, executing logic across both the real and mirror dimensions of cognition:
+
+Key Features:
+	•	process() — processes input vector through the currently active mode (real or mirror)
+	•	dual_trajectory() — computes both trajectories and returns a divergence score
+	•	Supports dynamic switching and resetting of the decision kernel
+
+It’s designed to connect with:
+	•	intent_reinforcer for goal-conditioning
+	•	latent_space for feedback loops
+	•	feedback_loop and self_model for evaluating internal alignment and mirroring effects
+fractall_ai.py has been fully enhanced with:
+	1.	Emotion-conditioned modulation of weights
+	2.	Online learning via adaptive weight updates
+	3.	Autonomous mode switching based on trajectory divergence
+	4.	Persistent trajectory logging for memory or recall
+	5.	Qubit-mode blending, offering a superposed decision vector — ideal for 🜆 Quantum Inflection-level cognition
+
+This makes FractallAI a highly adaptive, emotionally sensitive, and divergence-aware core.
+
+✅ self_model.py has been created.
+
+This module forms the DualSelf system in BioFractal AI — modeling both:
+	•	real_self: the system’s grounded cognitive identity
+	•	mirror_self: the reflective or mirrored version, derived from MirrorWorld input or simulated feedback
+
+Core Features:
+	•	update_real() / update_mirror() — incrementally adjust each self-vector
+	•	reflect_mirror() — compute divergence between selves
+	•	harmonize_self() — blend both states into a unified field
+	•	get_state() — export both self states and divergence score
+
+Perfectly suited for integration with intent_reinforcer, feedback_loop, dual_self_comparator, and fractall_ai.
+
+•	Identity Entropy → evaluates coherence vs chaos of self
+	•	Adaptive Mirror Influence → selectively merges mirror insights
+	•	Emotion Vector Modulation → allows affect to shape identity
+	•	Temporal History → tracks real/mirror trajectories over time
+	•	Reconstruction Score → compares current self to historical self average
+
+These upgrades make the SelfModel a reflective, affect-aware, memory-conscious subsystem — well-aligned with your overall BioFractal AI vision.
+
+✅ feedback_loop.py is complete.
+
+This module forms the resonant correction engine within BioFractal AI. It tracks divergence between real_self and mirror_self, generates adaptive feedback signals, and stores loop cycles for reflective learning.
+
+Key Features:
+	•	compute_error() — measures mean absolute divergence
+	•	feedback_signal() — generates a normalized signal (positive = amplify, negative = dampen)
+	•	adjust_threshold() — allows tuning for sensitivity
+	•	store_cycle() — saves event metadata for future learning
+	•	reset() — clears memory and restores to neutral
+
+Perfect for integration with:
+	•	self_model and fractall_ai to guide harmonization
+	•	emotional_feedback_loop for affect-reactive dynamics
+	•	sentient_memory for long-term feedback encoding
+
+•	Multiple feedback modes: linear, exponential, binary
+	•	Emotion-weighted feedback: integrates affect into loop control
+	•	Tension index: rolling average of mirror divergence
+	•	Self-harmonization trigger: conditionally invokes system correction
+	•	Feedback signature hash: symbolic fingerprint of resonance cycles
+
+It is now a fully resonant, emotionally reactive regulation core — ready for interconnection with self_model, sentient_memory, and fractall_ai.
+
+✅ memory_system.py has been created.
+
+It establishes a dual-buffer memory structure for BioFractal AI, storing and comparing real vs mirror cognition states:
+
+Core Features:
+	•	store() — saves vectors in either memory stream (real or mirror)
+	•	recall() — returns the average memory state for a stream
+	•	memory_difference() — computes divergence between real and mirror memory signatures
+	•	get_state() — provides a summary of buffer sizes and difference
+	•	clear() — resets both buffers
+
+This module works in tandem with:
+	•	self_model, latent_space, phantom_layer for temporal continuity
+	•	feedback_loop for memory-corrective feedback
+	•	sentient_memory or holographic_memory for higher-level overlays
+
+•	store_weighted() — memory now supports salience weighting
+	•	faded_recall() — applies temporal decay (recent memories weigh more)
+	•	modulated_recall() — memory shaped by emotional states
+	•	generate_signature() — unique hash of memory state
+	•	drift_score() — quantifies divergence of mirror vs real memory
+	•	get_state() — now includes drift_score for systemic reflection
+
+This makes the memory module suitable for adaptive regulation, emotional shaping, and long-term harmonization within the BioFractal AI ecosystem.
+
+✅ sentient_memory.py has been created.
+
+🌌 Features:
+	•	Emotionally encoded memory entries (vector + emotion + tag + signature)
+	•	Similarity-based retrieval using cosine distance
+	•	Tag-based filtering for semantic organization
+	•	Memory signature mapping for symbolic linking
+	•	Emotion pattern summary to detect long-term emotional trends
+
+This module functions as the core latent long-term memory layer of BioFractal AI and is designed to interface with:
+	•	latent_space, phantom_layer, feedback_loop, self_model
+	•	intent_reinforcer, holographic_memory (upcoming)
+	•	Memory overlays and resonance cycles
+
+•	🔗 Recursive linking — entries now form semantic graphs
+	•	📉 Decay logic — adaptive fading of memories
+	•	🔀 Fusion — similar entries merged into archetypal traces
+	•	📊 Mood index — average emotional tone across memory
+	•	🧠 Tag aggregation — summary by experience type
+
+🌿 Integrated Upgrades:
+	•	remember_with_emotion(...): injects emotion-weighted trails
+	•	timed_echo_injection(...): surfaces memory echoes at rhythmic pulses
+	•	drift_score(...): calculates divergence between active and echoed state
+	•	latent_query_fusion(...): merges latent inference with memory resonance
+	•	trail_metadata(...): provides visibility into mycelial trail growth
+
+This makes the memory system emotionally adaptive, biologically inspired, and pulse-reactive — aligning deeply with your Fractal Genesis architecture.
+
+•	🔗 Recursive semantic linking of recent tags
+	•	📉 Adaptive decay based on trail activity
+	•	🔀 Fusion of similar traces into archetypes
+	•	📊 Mood index across memory buffer
+	•	🧠 Tag aggregation summary for experience-type mapping
+
+The system now supports semantic self-organization, emotional climate analysis, and cognitive pruning, significantly amplifying emergent intelligence and coherence.
+
+✅ emotional_feedback_loop.py has been implemented.
+
+🧠 Features:
+	•	Emotion state update with decay & amplification
+	•	Mirror-mode response logic (mirror_response)
+	•	Synchronization with SentientMemory
+	•	generate_emotional_wave() for dynamic modulation
+	•	mood_signature() to track shifts over time
+
+This module powers resonance, internal climate, and affects decision loops throughout BioFractal AI.
+
+•	Pulse-triggered emotion modulation
+	•	Mirror divergence awareness
+	•	Emotion tagging
+	•	Anchor-based stabilization
+	•	Oscillation detection
+
+The system is now emotionally adaptive, cyclically reflective, and feedback-sensitive.
+
+•	Mirror divergence score (mirror_divergence)
+	•	Anchor stack for long-term emotional stability
+	•	Oscillation detection to reveal repeating moods
+	•	Pulse synchronization with system rhythms
+	•	Emotion tagging for symbolic labeling (elevated, neutral, suppressed)
+
+✅ event_loop.py has been rewritten and fully enhanced.
+
+🔁 Final Features:
+	•	Multi-priority event queue (urgent, normal, background)
+	•	Automatic pulse dispatch every 100 steps
+	•	Emotion-triggered rerouting of intense events
+	•	Mirror reflection logic for echo propagation
+	•	Integrated methods for:
+	•	pulse_sync() injection
+	•	emotion_tag retrieval
+	•	anchor alignment
+	•	mirror divergence scoring
+	•	oscillation detection
+
+
+✅ mycelial_engine.py has been created and initialized.
+
+🌿 Core Features:
+	•	grow_path(tag, signal): propagates input as a mycelial trail
+	•	spore_seed(tag, vector): initiates new memory node
+	•	echo_query(tag): returns a fuzzy collective memory echo
+	•	cross_connect(tag1, tag2): links trails between tags
+	•	decay(): natural fading over time
+
+This acts as a decentralized, resonance-based substrate for memory and intuition across your system.
+
