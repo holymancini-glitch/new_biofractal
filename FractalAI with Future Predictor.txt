@@ -1,0 +1,194 @@
+# Цей пакет інтегрує FractalSimulationEngine як ядро мислення
+# в агента FractalAI, дозволяючи йому симулювати та обирати майбутнє.
+
+import torch
+import torch.nn.functional as F
+import networkx as nx
+import numpy as np
+import copy
+import matplotlib.pyplot as plt
+import time
+
+# --- Модуль 1: core/mycelial_engine.py (без змін) ---
+class MycelialEngine:
+    """Ядро міцелієвого субстрату."""
+    def __init__(self, latent_dim=16, max_nodes=50):
+        self.graph = nx.Graph()
+        self.latent_dim, self.max_nodes = latent_dim, max_nodes
+        self.similarity_threshold = 0.90
+    def add_trace(self, vector):
+        vec_np = vector.detach().cpu().numpy().flatten()
+        most_similar_node, max_similarity = self._find_most_similar(vec_np)
+        if most_similar_node is not None and max_similarity > self.similarity_threshold:
+            self.graph.nodes[most_similar_node]['depth'] = min(5.0, self.graph.nodes[most_similar_node]['depth'] + 0.5)
+        else:
+            new_node_id = self._get_next_id()
+            self.graph.add_node(new_node_id, vector=vec_np, depth=1.0)
+            for other_id, data in self.graph.nodes(data=True):
+                if other_id == new_node_id: continue
+                sim = self._get_similarity(vec_np, data['vector'])
+                if sim > 0.7: self.graph.add_edge(new_node_id, other_id, weight=sim)
+    def _find_most_similar(self, vec_np):
+        if not self.graph.nodes: return None, -1
+        most_similar_node, max_similarity = None, -1
+        for node_id, data in self.graph.nodes(data=True):
+            sim = self._get_similarity(vec_np, data['vector'])
+            if sim > max_similarity: max_similarity, most_similar_node = sim, node_id
+        return most_similar_node
+    def _get_next_id(self):
+        return len(self.graph.nodes) if not self.graph.nodes else max(self.graph.nodes) + 1
+    def _get_similarity(self, v1, v2):
+        return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-6)
+
+# --- Модуль 2: core/fractal_simulation_engine.py (без змін) ---
+class FractalSimulationEngine:
+    """Симулятор, що передбачає еволюцію графа та зміну його ентропії."""
+    def _calculate_graph_entropy(self, graph):
+        if len(graph.nodes) < 2: return 0.0
+        vectors = np.array([data['vector'] for _, data in graph.nodes(data=True)])
+        vectors = vectors / (np.linalg.norm(vectors, axis=1, keepdims=True) + 1e-6)
+        covariance_matrix = np.cov(vectors, rowvar=False)
+        eigenvalues = np.linalg.eigvalsh(covariance_matrix)
+        eigenvalues = eigenvalues[eigenvalues > 1e-9]
+        if len(eigenvalues) == 0: return 0.0
+        prob_distribution = eigenvalues / np.sum(eigenvalues)
+        entropy = -np.sum(prob_distribution * np.log2(prob_distribution + 1e-9))
+        max_entropy = np.log2(vectors.shape[1])
+        return entropy / max_entropy if max_entropy > 0 else 0.0
+    def _aggregate_neighbors(self, graph, node_id):
+        neighbors = list(graph.neighbors(node_id))
+        if not neighbors: return torch.from_numpy(graph.nodes[node_id]['vector'])
+        aggregated_vector = torch.zeros_like(torch.from_numpy(graph.nodes[node_id]['vector']))
+        total_weight = 0
+        for neighbor_id in neighbors:
+            weight = graph[node_id][neighbor_id].get('weight', 0)
+            neighbor_vector = torch.from_numpy(graph.nodes[neighbor_id]['vector'])
+            aggregated_vector += neighbor_vector * weight
+            total_weight += weight
+        return aggregated_vector / (total_weight + 1e-6)
+    def simulate_step(self, current_graph, action_vector):
+        current_entropy = self._calculate_graph_entropy(current_graph)
+        predicted_graph = copy.deepcopy(current_graph)
+        action_vector_norm = F.normalize(action_vector, p=2, dim=0)
+        updates = {}
+        for node_id in predicted_graph.nodes():
+            current_vector = torch.from_numpy(predicted_graph.nodes[node_id]['vector']).float()
+            neighbor_influence = self._aggregate_neighbors(predicted_graph, node_id).float()
+            new_vector = current_vector * 0.8 + neighbor_influence * 0.1 + action_vector_norm * 0.1
+            updates[node_id] = F.normalize(new_vector, p=2, dim=0)
+        for node_id, new_vector in updates.items():
+            predicted_graph.nodes[node_id]['vector'] = new_vector.numpy()
+        action_np = action_vector_norm.numpy()
+        most_similar_node, max_similarity = self._find_most_similar_in_graph(predicted_graph, action_np)
+        if max_similarity < 0.95:
+            new_node_id = self._get_next_id_for_graph(predicted_graph)
+            predicted_graph.add_node(new_node_id, vector=action_np, depth=1.0, type='projection')
+            if most_similar_node is not None:
+                 predicted_graph.add_edge(new_node_id, most_similar_node, weight=max_similarity)
+        for u, v in predicted_graph.edges():
+            new_similarity = self._get_similarity(predicted_graph.nodes[u]['vector'], predicted_graph.nodes[v]['vector'])
+            predicted_graph[u][v]['weight'] = new_similarity
+        future_entropy = self._calculate_graph_entropy(predicted_graph)
+        entropy_delta = future_entropy - current_entropy
+        return predicted_graph, entropy_delta
+    def _find_most_similar_in_graph(self, graph, vec_np):
+        if not graph.nodes: return None, -1
+        most_similar_node, max_similarity = None, -1
+        for node_id, data in graph.nodes(data=True):
+            sim = self._get_similarity(vec_np, data['vector'])
+            if sim > max_similarity: max_similarity, most_similar_node = sim, node_id
+        return most_similar_node
+    def _get_similarity(self, v1, v2): return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-6)
+    def _get_next_id_for_graph(self, graph): return len(graph.nodes) if not graph.nodes else max(graph.nodes) + 1
+
+# --- Модуль 3: core/fractal_ai.py (ОНОВЛЕНО) ---
+class FractalAgent:
+    """
+    Агент FractalAI, що тепер використовує симулятор для прийняття рішень.
+    Він "уявляє" майбутнє і обирає дію, що відповідає його поточній "інтенції".
+    """
+    def __init__(self, latent_dim, num_candidates=5):
+        self.simulator = FractalSimulationEngine()
+        self.latent_dim = latent_dim
+        self.num_candidates = num_candidates
+        print("[FractalAgent v2.0] Ініціалізовано з вбудованим Future Predictor.")
+
+    def think_and_decide(self, current_graph, policy="explore"):
+        """
+        Головний цикл мислення: симулює кілька варіантів майбутнього і обирає найкращий.
+        
+        Args:
+            current_graph (nx.Graph): Поточний стан внутрішнього світу.
+            policy (str): Поточна "інтенція" системи. Може бути 'explore' (вдих)
+                          або 'consolidate' (видих).
+        
+        Returns:
+            tuple: (обрана дія, передбачуваний майбутній граф, всі розглянуті варіанти).
+        """
+        # 1. Генеруємо кілька кандидатських "думок" або "дій"
+        candidate_actions = [F.normalize(torch.randn(self.latent_dim), p=2, dim=0) for _ in range(self.num_candidates)]
+        
+        # 2. Симулюємо майбутнє для кожної дії
+        simulated_futures = []
+        for action in candidate_actions:
+            predicted_graph, entropy_delta = self.simulator.simulate_step(current_graph, action)
+            simulated_futures.append({
+                "action": action,
+                "predicted_graph": predicted_graph,
+                "entropy_delta": entropy_delta
+            })
+        
+        # 3. Приймаємо рішення на основі поточної політики (інтенції)
+        if policy == "explore":
+            # "Вдих": обираємо дію, що максимізує ентропію (дослідження)
+            best_future = max(simulated_futures, key=lambda x: x['entropy_delta'])
+        elif policy == "consolidate":
+            # "Видих": обираємо дію, що мінімізує ентропію (стабілізація)
+            best_future = min(simulated_futures, key=lambda x: x['entropy_delta'])
+        else:
+            # За замовчуванням - дослідження
+            best_future = max(simulated_futures, key=lambda x: x['entropy_delta'])
+            
+        chosen_action = best_future['action']
+        predicted_graph = best_future['predicted_graph']
+        
+        return chosen_action, predicted_graph, simulated_futures
+
+# --- Демонстрація роботи оновленого агента ---
+if __name__ == '__main__':
+    
+    LATENT_DIM = 16
+    
+    # Створюємо початковий міцелій
+    mycelium = MycelialEngine(latent_dim=LATENT_DIM)
+    base_vec = torch.randn(LATENT_DIM)
+    for _ in range(5):
+        mycelium.add_trace(base_vec + torch.randn(LATENT_DIM) * 0.1)
+    
+    # Ініціалізуємо агента
+    agent = FractalAgent(latent_dim=LATENT_DIM, num_candidates=3)
+    
+    # --- Сценарій 1: Політика "Дослідження" (Вдих) ---
+    print("\n" + "="*20 + " СЦЕНАРІЙ 1: ПОЛІТИКА 'EXPLORE' (ВДИХ) " + "="*20)
+    
+    chosen_action, predicted_graph, futures = agent.think_and_decide(mycelium.graph, policy="explore")
+    
+    print("Агент розглянув такі варіанти майбутнього:")
+    for i, future in enumerate(futures):
+        print(f"  Варіант {i+1}: Дія призведе до зміни ентропії (ΔS) = {future['entropy_delta']:+.4f}")
+        
+    chosen_delta = [f['entropy_delta'] for f in futures if torch.equal(f['action'], chosen_action)][0]
+    print(f"\nОбрана дія: та, що веде до ΔS = {chosen_delta:+.4f} (максимальне зростання ентропії).")
+
+    # --- Сценарій 2: Політика "Консолідація" (Видих) ---
+    print("\n" + "="*20 + " СЦЕНАРІЙ 2: ПОЛІТИКА 'CONSOLIDATE' (ВИДИХ) " + "="*20)
+
+    chosen_action_2, _, futures_2 = agent.think_and_decide(mycelium.graph, policy="consolidate")
+
+    print("Агент розглянув такі варіанти майбутнього:")
+    for i, future in enumerate(futures_2):
+        print(f"  Варіант {i+1}: Дія призведе до зміни ентропії (ΔS) = {future['entropy_delta']:+.4f}")
+
+    chosen_delta_2 = [f['entropy_delta'] for f in futures_2 if torch.equal(f['action'], chosen_action_2)][0]
+    print(f"\nОбрана дія: та, що веде до ΔS = {chosen_delta_2:+.4f} (максимальне зменшення ентропії).")
+
