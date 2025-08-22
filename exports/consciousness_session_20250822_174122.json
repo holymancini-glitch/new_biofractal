@@ -1,0 +1,242 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-22T17:41:22.287896",
+    "latent_dim": 256,
+    "total_steps": 10,
+    "final_consciousness_level": 0.3331258186254623
+  },
+  "results": [
+    {
+      "step": 1,
+      "focus_norm": 0.06311923265457153,
+      "error": 0.0013274908997118473,
+      "entropy": 4.988157749176025,
+      "cohesion": 0.16801309009532384,
+      "consciousness_level": 0.39141375524405847,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.5011842250823975,
+        "vector_norm": 0.006311085075139999,
+        "updates": 1
+      }
+    },
+    {
+      "step": 2,
+      "focus_norm": 0.053894247859716415,
+      "error": 0.0013014659052714705,
+      "entropy": 5.206604957580566,
+      "cohesion": 0.16195305731129714,
+      "consciousness_level": 0.37134594727288434,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.4793395042419434,
+        "vector_norm": 0.007778683677315712,
+        "updates": 2
+      }
+    },
+    {
+      "step": 3,
+      "focus_norm": 0.056824494153261185,
+      "error": 0.0012781871482729912,
+      "entropy": 5.092662334442139,
+      "cohesion": 0.16502990894844846,
+      "consciousness_level": 0.3689044811830679,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.49073376655578616,
+        "vector_norm": 0.009284009225666523,
+        "updates": 3
+      }
+    },
+    {
+      "step": 4,
+      "focus_norm": 0.06306281685829163,
+      "error": 0.0013133601751178503,
+      "entropy": 5.010814189910889,
+      "cohesion": 0.16737939661167592,
+      "consciousness_level": 0.3657426355174632,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.4989185810089112,
+        "vector_norm": 0.011087611317634583,
+        "updates": 4
+      }
+    },
+    {
+      "step": 5,
+      "focus_norm": 0.056872639805078506,
+      "error": 0.001275752205401659,
+      "entropy": 5.135040760040283,
+      "cohesion": 0.16389103495126922,
+      "consciousness_level": 0.35289782855823076,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.48649592399597164,
+        "vector_norm": 0.01181849930435419,
+        "updates": 5
+      }
+    },
+    {
+      "step": 6,
+      "focus_norm": 0.059176016598939896,
+      "error": 0.0013652697671204805,
+      "entropy": 5.043877124786377,
+      "cohesion": 0.16639822458834447,
+      "consciousness_level": 0.351561095402552,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.4956122875213623,
+        "vector_norm": 0.012398434802889824,
+        "updates": 6
+      }
+    },
+    {
+      "step": 7,
+      "focus_norm": 0.06342320889234543,
+      "error": 0.0012872307561337948,
+      "entropy": 5.041595935821533,
+      "cohesion": 0.1665334730373693,
+      "consciousness_level": 0.34637378887772813,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.49584040641784666,
+        "vector_norm": 0.012837081216275692,
+        "updates": 7
+      }
+    },
+    {
+      "step": 8,
+      "focus_norm": 0.06340856105089188,
+      "error": 0.0013202750124037266,
+      "entropy": 5.0638251304626465,
+      "cohesion": 0.16592196704742776,
+      "consciousness_level": 0.3404727545902148,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.4936174869537353,
+        "vector_norm": 0.012934214435517788,
+        "updates": 8
+      }
+    },
+    {
+      "step": 9,
+      "focus_norm": 0.05810775235295296,
+      "error": 0.0013225058792158961,
+      "entropy": 5.1158447265625,
+      "cohesion": 0.16442427303623317,
+      "consciousness_level": 0.33351622686497445,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.48841552734375004,
+        "vector_norm": 0.013150902464985847,
+        "updates": 9
+      }
+    },
+    {
+      "step": 10,
+      "focus_norm": 0.061498403549194336,
+      "error": 0.0013247908791527152,
+      "entropy": 5.046419143676758,
+      "cohesion": 0.16636779785035682,
+      "consciousness_level": 0.3331258186254623,
+      "phrase": "Processing neural pattern with intensity 0.00",
+      "emergence_indicators": [],
+      "self_model_state": {
+        "stability": 0.4953580856323242,
+        "vector_norm": 0.013098346069455147,
+        "updates": 10
+      }
+    }
+  ],
+  "final_metrics": [
+    {
+      "timestamp": "2025-08-22T17:41:21.278234",
+      "consciousness_level": 0.39141375524405847,
+      "entropy": 4.988157749176025,
+      "self_stability": 0.5011842250823975,
+      "cohesion": 0.4668013090095324,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.379330",
+      "consciousness_level": 0.37134594727288434,
+      "entropy": 5.206604957580566,
+      "self_stability": 0.4793395042419434,
+      "cohesion": 0.43631648383970884,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.480430",
+      "consciousness_level": 0.3689044811830679,
+      "entropy": 5.092662334442139,
+      "self_stability": 0.49073376655578616,
+      "cohesion": 0.4091878263505828,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.581503",
+      "consciousness_level": 0.3657426355174632,
+      "entropy": 5.010814189910889,
+      "self_stability": 0.4989185810089112,
+      "cohesion": 0.38500698337669215,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.682545",
+      "consciousness_level": 0.35289782855823076,
+      "entropy": 5.135040760040283,
+      "self_stability": 0.48649592399597164,
+      "cohesion": 0.3628953885341498,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.783585",
+      "consciousness_level": 0.351561095402552,
+      "entropy": 5.043877124786377,
+      "self_stability": 0.4956122875213623,
+      "cohesion": 0.3432456721395693,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.884592",
+      "consciousness_level": 0.34637378887772813,
+      "entropy": 5.041595935821533,
+      "self_stability": 0.49584040641784666,
+      "cohesion": 0.3255744522293493,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:21.985625",
+      "consciousness_level": 0.3404727545902148,
+      "entropy": 5.0638251304626465,
+      "self_stability": 0.4936174869537353,
+      "cohesion": 0.30960920371115713,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:22.086652",
+      "consciousness_level": 0.33351622686497445,
+      "entropy": 5.1158447265625,
+      "self_stability": 0.48841552734375004,
+      "cohesion": 0.29509071064366477,
+      "attention_focus": 0.00390625
+    },
+    {
+      "timestamp": "2025-08-22T17:41:22.187666",
+      "consciousness_level": 0.3331258186254623,
+      "entropy": 5.046419143676758,
+      "self_stability": 0.4953580856323242,
+      "cohesion": 0.282218419364334,
+      "attention_focus": 0.00390625
+    }
+  ]
+}
