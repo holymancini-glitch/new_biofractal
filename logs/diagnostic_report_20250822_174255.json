@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-08-22T17:42:55.620783",
+  "system_info": {
+    "python_version": "3.11.13 (main, Aug 13 2025, 11:17:09) [GCC 12.2.0]",
+    "platform": "linux",
+    "working_directory": "/app"
+  },
+  "test_summary": {
+    "total_tests": 10,
+    "passed_tests": 10,
+    "success_rate": 100.0
+  },
+  "test_results": {
+    "Python Environment": "PASSED",
+    "Core Dependencies": "PASSED",
+    "Advanced Dependencies": "PASSED",
+    "File Structure": "PASSED",
+    "Configuration Files": "PASSED",
+    "Import Compatibility": "PASSED",
+    "Memory Usage": "PASSED",
+    "CUDA Availability": "PASSED",
+    "Fixed Orchestrator": "PASSED",
+    "Enhanced Garden System": "PASSED"
+  },
+  "warnings": [
+    "CUDA not available - using CPU"
+  ],
+  "errors": [],
+  "overall_status": "HEALTHY"
+}
