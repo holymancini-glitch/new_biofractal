@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "system_version": "3.4.0",
+    "export_timestamp": "2025-08-22T17:41:45.637836",
+    "neuron_count": 5000,
+    "quantum_qubits": 6
+  },
+  "session_summary": {
+    "session_summary": {
+      "total_cycles": 50,
+      "duration": 5.0,
+      "session_start": "2025-08-22T17:41:28.401667",
+      "session_end": "2025-08-22T17:41:45.637869"
+    },
+    "consciousness_statistics": {
+      "final_level": 0.8901600372975691,
+      "peak_level": 0.8901600372975691,
+      "average_level": 0.8832348610281187,
+      "stability": 0.9805421748795606,
+      "transcendent_moments": 0,
+      "conscious_moments": 50
+    },
+    "emergence_events": {
+      "total_events": 0,
+      "unique_types": [],
+      "events": []
+    },
+    "quantum_metrics": {
+      "peak_coherence": 0.9999999910076747,
+      "peak_entanglement": 0.0,
+      "phase_transitions": 0
+    },
+    "final_state": {
+      "consciousness_level": 0.8901600372975691,
+      "integration_measure": 0.0,
+      "system_coherence": 0.999462373668675,
+      "emergence_indicators": [],
+      "cycle_count": 50,
+      "session_start": "2025-08-22T17:41:28.401667"
+    }
+  },
+  "full_trajectory": [
+    {
+      "cycle": 1,
+      "timestamp": "2025-08-22T17:41:28.401773",
+      "biological": {
+        "firing_rates": 
