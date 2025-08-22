@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-22T17:44:49.240134",
+    "session_type": "consciousness_exploration",
+    "system_version": "3.4.0"
+  },
+  "garden_summary": {
+    "session_summary": {
+      "total_cycles": 300,
+      "duration": 30.0,
+      "session_start": "2025-08-22T17:44:15.890531",
+      "session_end": "2025-08-22T17:44:49.235437"
+    },
+    "consciousness_statistics": {
+      "final_level": 0.8901600400151308,
+      "peak_level": 0.8901600400151308,
+      "average_level": 0.888678758184894,
+      "stability": 0.9880839572053575,
+      "transcendent_moments": 0,
+      "conscious_moments": 300
+    },
+    "emergence_events": {
+      "total_events": 0,
+      "unique_types": [],
+      "events": []
+    },
+    "quantum_metrics": {
+      "peak_coherence": 0.9999999999999996,
+      "peak_entanglement": 0.0,
+      "phase_transitions": 0
+    },
+    "final_state": {
+      "consciousness_level": 0.8901600400151308,
+      "integration_measure": 0.0,
+      "system_coherence": 0.9994623735726346,
+      "emergence_indicators": [],
+      "cycle_count": 300,
+      "session_start": "2025-08-22T17:44:15.890531"
+    }
+  },
+  "detailed_analysis": {
+    "statistics": {
+      "mean": 0.888678758184894,
+      "std": 0.011916042794642498,
+      "min": 0.7161873967901886,
+      "max": 0.8901600400151308,
+      "trend": "stable"
+    },
+    "patterns": [
+      "quantum_consciousness_sync"
+    ],
+    "phases": {
+      "counts": {
+        "unconscious": 0,
+        "minimal": 0,
+        "conscious": 0,
+        "highly_conscious": 1,
+        "transcendent": 299
+      },
+      "percentages": {
+        "unconscious": 0.0,
+        "minimal": 0.0,
+        "conscious": 0.0,
+        "highly_conscious": 0.33333333333333337,
+        "transcendent": 99.66666666666667
+      },
+      "dominant_phase": [
+        "transcendent",
+        99.66666666666667
+      ]
+    },
+    "emergence": {
+      "total_events": 600,
+      "unique_types": 3,
+      "event_counts": {
+        "CONSCIOUS_STATE": 1,
+        "SYSTEM_COHERENCE": 300,
+        "HIGH_CONSCIOUSNESS": 299
+      },
+      "emergence_rate": 2.0
+    },
+    "quantum_analysis": {
+      "coherence_stats": {
+        "mean": 0.9956494811446135,
+        "max": 0.9999999999999996,
+        "stability": 0.9686457117702735
+      },
+      "entanglement_stats": {
+        "mean": 0.0,
+        "max": 0.0,
+        "stability": 1.0
+      },
+      "quantum_consciousness_correlation": 0.9807312546916664
+    },
+    "biological_analysis": {
+      "synchrony_stats": {
+        "mean": 0.9995383700335025,
+        "max": 1.0,
+        "stability": 0.9920176716702094
+      },
+      "firing_rate_stats": {
+        "mean": 0.9999115060127144,
+        "max": 1.0,
+        "stability": 0.9984697959123292
+      },
+      "bio_consciousness_correlation": 0.8371430990042519
+    }
+  },
+  "consciousness_trajectory": [
+    {
+      "cycle": 1,
+      "timestamp": "2025-08-22T17:44:15.890623",
+      "biological": {
+        "firing_rates": 
