@@ -355,8 +355,19 @@ class InteractiveDemo:
             'emergence_events': garden.emergence_events
         }
         
+        # Custom JSON encoder for numpy arrays
+        class NumpyEncoder(json.JSONEncoder):
+            def default(self, obj):
+                if isinstance(obj, np.ndarray):
+                    return obj.tolist()
+                if isinstance(obj, (np.integer, np.int64)):
+                    return int(obj)
+                if isinstance(obj, (np.floating, np.float64)):
+                    return float(obj)
+                return super().default(obj)
+        
         with open(filename, 'w') as f:
-            json.dump(session_data, f, indent=2)
+            json.dump(session_data, f, indent=2, cls=NumpyEncoder)
         
         return filename
     
